@@ -1,0 +1,81 @@
+{
+  "identifier": "com.fanchou.bob.paddleocr",
+  "version": "1.0.0",
+  "category": "ocr",
+  "name": "PaddleOCR (本地)",
+  "summary": "通过本地 Ollama 调用 PaddleOCR-VL 进行文本识别，支持位置信息与原图翻译。",
+  "author": "Fan-chou",
+  "homepage": "https://github.com/Fan-chou/bob-plugin-paddleocr",
+  "icon": "icon.png",
+  "appcast": "https://github.com/Fan-chou/bob-plugin-paddleocr/releases/latest/download/appcast.json",
+  "minBobVersion": "1.20.0",
+  "options": [
+    {
+      "identifier": "apiUrl",
+      "type": "text",
+      "title": "接口地址",
+      "defaultValue": "http://localhost:11434",
+      "textConfig": {
+        "type": "visible",
+        "placeholderText": "http://localhost:11434"
+      },
+      "desc": "PaddleOCR 模型的 OpenAI 兼容 API 端点"
+    },
+    {
+      "identifier": "apiKey",
+      "type": "text",
+      "title": "API 密钥",
+      "textConfig": {
+        "type": "visible",
+        "placeholderText": "本地服务留空即可"
+      },
+      "desc": "如果 API 需要认证，在此填入密钥"
+    },
+    {
+      "identifier": "model",
+      "type": "text",
+      "title": "模型",
+      "defaultValue": "paddleocr-vl",
+      "textConfig": {
+        "type": "visible",
+        "placeholderText": "paddleocr-vl"
+      },
+      "desc": "PaddleOCR 模型名称"
+    },
+    {
+      "identifier": "enableBoundingBox",
+      "type": "menu",
+      "title": "位置信息",
+      "defaultValue": "true",
+      "menuValues": [
+        { "title": "开启（推荐，支持原图翻译）", "value": "true" },
+        { "title": "关闭（仅纯文本）", "value": "false" }
+      ],
+      "desc": "开启后使用 Spotting 模式获取文字精确位置"
+    },
+    {
+      "identifier": "outputMode",
+      "type": "menu",
+      "title": "输出模式",
+      "defaultValue": "regionInfos",
+      "menuValues": [
+        { "title": "结构化 (regionInfos)", "value": "regionInfos" },
+        { "title": "扁平 (texts)", "value": "texts" }
+      ],
+      "desc": "结构化模式保留段落布局信息"
+    },
+    {
+      "identifier": "requestTimeout",
+      "type": "menu",
+      "title": "请求超时",
+      "defaultValue": "60",
+      "menuValues": [
+        { "title": "30 秒", "value": "30" },
+        { "title": "60 秒", "value": "60" },
+        { "title": "120 秒", "value": "120" },
+        { "title": "180 秒", "value": "180" }
+      ],
+      "desc": "单次 OCR 请求的最长等待时间"
+    }
+  ]
+}
